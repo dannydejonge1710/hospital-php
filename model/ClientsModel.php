@@ -1,6 +1,6 @@
 <?php
 
-function getOneBirthday() 
+function getOneBirthday($id) 
 {
 	$db = openDatabaseConnection();
 
@@ -71,7 +71,7 @@ function deleteBirthday($id)
 
 
 
-function editBirthday($id) 
+function editBirthday() 
 {
 	$firstname = ($_POST['firstname']);
 	$lastname = ($_POST['lastname']);

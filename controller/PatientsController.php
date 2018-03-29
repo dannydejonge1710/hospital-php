@@ -11,7 +11,7 @@ function index()
 
 function create()
 {
-	render("student/create");
+	render("student/createP");
 }
 
 function createSave()
@@ -21,13 +21,13 @@ function createSave()
 		exit();
 	}
 
-	header("Location:" . URL . "student/indexP");
+	header("Location:" . URL . "Patients/index");
 }
 
 function deleteThis($id)
 {
 	deleteBirthday($id);
-	header("Location:" . URL . "student/indexP");
+	header("Location:" . URL . "Patients/index");
 
 }
 
@@ -53,7 +53,7 @@ function editThis($id)
 function editSaveThis()
 {	
 	editBirthday($_POST);
-	header("Location:" . URL . "student/indexP");
+	header("Location:" . URL . "Patients/index");
 } 
 
 

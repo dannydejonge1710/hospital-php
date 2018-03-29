@@ -11,7 +11,7 @@ function index()
 
 function create()
 {
-	render("student/create");
+	render("student/createC");
 }
 
 function createSave()
@@ -21,13 +21,13 @@ function createSave()
 		exit();
 	}
 
-	header("Location:" . URL . "student/indexC");
+	header("Location:" . URL . "Clients/index");
 }
 
 function deleteThis($id)
 {
 	deleteBirthday($id);
-	header("Location:" . URL . "student/indexC");
+	header("Location:" . URL . "Clients/index");
 
 }
 
@@ -45,15 +45,17 @@ function deleteThis($id)
 function editThis($id)
 {
 	render("student/edit", array(
-		'clients' => editBirthday($id)
+		'clients' => getOneBirthday($id)
 	));
 }
 
 
 function editSaveThis()
-{	
-	editBirthday($_POST);
-	header("Location:" . URL . "student/index");
+{
+	if (!editBirthday()) {
+		header("Location:" . URL . "error/index");
+		exit();
+	}
+
+	header("Location:" . URL . "Clients/index");
 } 
-
-
