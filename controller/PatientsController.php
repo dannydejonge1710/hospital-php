@@ -4,19 +4,30 @@ require(ROOT . "model/PatientsModel.php");
 
 function index()
 {
-	render("student/indexP", array(
-		'patients' => getAllBirthdays()
+	render("hospital/indexP", array(
+		'patients' => getAllPatients()
 	));
 }
 
 function create()
 {
-	render("student/createP");
+	render("hospital/createP");
 }
 
 function createSave()
 {
-	if (!createBirthday()) {
+	if (!createPatient()) {
+		header("Location:" . URL . "error/index");
+		exit();
+	}
+
+
+	header("Location:" . URL . "Patients/index");
+}
+
+function deleteThis($id)
+{
+	if (!deletePatient($id)) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}
@@ -24,36 +35,21 @@ function createSave()
 	header("Location:" . URL . "Patients/index");
 }
 
-function deleteThis($id)
-{
-	deleteBirthday($id);
-	header("Location:" . URL . "Patients/index");
-
-}
-
-
-
-
-
-
-
-
-
-
-
 
 function editThis($id)
 {
-	render("student/edit", array(
-		'patients' => editBirthday($id)
+	render("hospital/editP", array(
+		'patients' => getOnePatient($id)
 	));
 }
 
 
 function editSaveThis()
-{	
-	editBirthday($_POST);
+{
+	if (!editPatient()) {
+		header("Location:" . URL . "error/index");
+		exit();
+	}
+
 	header("Location:" . URL . "Patients/index");
 } 
-
-

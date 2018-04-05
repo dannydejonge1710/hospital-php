@@ -4,56 +4,53 @@ require(ROOT . "model/SpeciesModel.php");
 
 function index()
 {
-	render("student/indexS", array(
-		'species' => getAllBirthdays()
+	render("hospital/indexS", array(
+		'species' => getAllSpecies()
 	));
 }
 
 function create()
 {
-	render("student/create");
+	render("hospital/createS");
 }
 
 function createSave()
 {
-	if (!createBirthday()) {
+	if (!createSpecie()) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}
 
-	header("Location:" . URL . "student/indexS");
+
+	header("Location:" . URL . "Species/index");
 }
 
 function deleteThis($id)
 {
-	deleteBirthday($id);
-	header("Location:" . URL . "student/indexS");
+	if (!deleteSpecie($id)) {
+		header("Location:" . URL . "error/index");
+		exit();
+	}
 
+	header("Location:" . URL . "Species/index");
 }
-
-
-
-
-
-
-
-
-
-
 
 
 function editThis($id)
 {
-	render("student/edit", array(
-		'species' => editBirthday($id)
+	render("hospital/editS", array(
+		'clients' => getOneSpecie($id)
 	));
 }
 
 
 function editSaveThis()
-{	
-	editBirthday($_POST);
-	header("Location:" . URL . "student/index");
-} 
+{
+	if (!editSpecie()) {
+		header("Location:" . URL . "error/index");
+		exit();
+	}
 
+	header("Location:" . URL . "Species/index");
+} 
 

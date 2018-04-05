@@ -4,58 +4,63 @@ require(ROOT . "model/ClientsModel.php");
 
 function index()
 {
-	render("student/indexC", array(
-		'clients' => getAllBirthdays()
+	render("hospital/indexC", array(
+		'clients' => getAllClients()
 	));
 }
 
 function create()
 {
-	render("student/createC");
+	render("hospital/createC");
 }
 
 function createSave()
 {
-	if (!createBirthday()) {
+	if (!createClient()) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}
+
 
 	header("Location:" . URL . "Clients/index");
 }
 
 function deleteThis($id)
 {
-	deleteBirthday($id);
+	if (!deleteClient($id)) {
+		header("Location:" . URL . "error/index");
+		exit();
+	}
+
 	header("Location:" . URL . "Clients/index");
-
 }
-
-
-
-
-
-
-
-
-
-
 
 
 function editThis($id)
 {
-	render("student/edit", array(
-		'clients' => getOneBirthday($id)
+	render("hospital/editC", array(
+		'clients' => getOneClient($id)
 	));
 }
 
 
 function editSaveThis()
 {
-	if (!editBirthday()) {
+	if (!editClient()) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}
 
 	header("Location:" . URL . "Clients/index");
 } 
+
+function sortThis()
+{
+	if (!sortClients()) {
+		header("Location:" . URL . "error/index");
+		exit();
+	}
+
+
+	header("Location:" . URL . "Clients/index");
+}

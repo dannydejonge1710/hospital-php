@@ -1,10 +1,10 @@
 <?php
 
-function getOneBirthday() 
+function getOnePatient($id) 
 {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM patients WHERE patients_id = :id";
+	$sql = "SELECT * FROM patients WHERE patient_id = :id";
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		":id" => $id));
@@ -14,7 +14,7 @@ function getOneBirthday()
 	return $query->fetch();
 }
 
-function getAllBirthdays() 
+function getAllPatients() 
 {
 	$db = openDatabaseConnection();
 
@@ -28,12 +28,12 @@ function getAllBirthdays()
 	return $query->fetchAll();
 }
 
-function createBirthday() 
+function createPatient() 
 {
-	$patient_name = ($_POST['patientname']);
-	$species_id = ($_POST['speciesid']);
-	$client_id = ($_POST['clientid']);
-	$patient_status = ($_POST['patientstatus']);
+	$patient_name = ($_POST['patient_name']);
+	$species_id = ($_POST['species_id']);
+	$client_id = ($_POST['client_id']);
+	$patient_status = ($_POST['patient_status']);
 
 
 	if (strlen($patient_name) == 0 || strlen($species_id) == 0 || strlen($client_id) == 0 || strlen($patient_status) == 0) {
@@ -42,20 +42,21 @@ function createBirthday()
 	
 	$db = openDatabaseConnection();
 
-	$sql = "INSERT INTO patients(patient_name, species_id, client_id, patient_status) VALUES (:patientname, :speciesid, :clientid, :patientstatus)";
+	$sql = "INSERT INTO patients(patient_name, species_id, client_id, patient_status) VALUES (:patient_name, :species_id, :client_id, :patient_status)";
+	
 	$query = $db->prepare($sql);
 	$query->execute(array(
-		':patientname' => $patient_name,
-		':speciesid' => $species_id,
-		':clientid' => $client_id,
-		':patientstatus' => $patient_status));
+		':patient_name' => $patient_name,
+		':species_id' => $species_id,
+		':client_id' => $client_id,
+		':patient_status' => $patient_status));
 
 	$db = null;
 	
 	return true;
 }
 
-function deleteBirthday($id) 
+function deletePatient($id) 
 {
 	if (!$id) {
 		return false;
@@ -75,23 +76,27 @@ function deleteBirthday($id)
 
 
 
-function editBirthday($id) 
+function editPatient() 
 {
-	$firstname = ($_POST['firstname']);
-	$lastname = ($_POST['lastname']);
+	$patient_name = ($_POST['patient_name']);
+	$species_id = ($_POST['species_id']);
+	$client_id = ($_POST['client_id']);
+	$patient_status = ($_POST['patient_status']);
 	$id = ($_POST['id']);
 	
-	if (strlen($firstname) == 0 || strlen($lastname) == 0 || strlen($id) == 0) {
+	if (strlen($patient_name) == 0 || strlen($species_id) == 0 || strlen($client_id) == 0 || strlen($patient_status) == 0 || strlen($id) == 0) {
 		return false;
 	}
 	
 	$db = openDatabaseConnection();
 
-	$sql = "UPDATE clients SET client_firstname = :firstname, client_lastname = :lastname WHERE id = :id";
+	$sql = "UPDATE patients SET patient_name = :patient_name, species_id = :species_id, client_id = :client_id, patient_status = :patient_status WHERE patient_id = :id";
 	$query = $db->prepare($sql);
 	$query->execute(array(
-		':firstname' => $firstname,
-		':lastname' => $lastname,
+		':patient_name' => $patient_name,
+		':species_id' => $species_id,
+		':client_id' => $client_id,
+		':patient_status' => $patient_status,
 		':id' => $id));
 
 	$db = null;

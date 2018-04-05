@@ -1,6 +1,6 @@
 <?php
 
-function getOneBirthday($id) 
+function getOneClient($id) 
 {
 	$db = openDatabaseConnection();
 
@@ -14,7 +14,7 @@ function getOneBirthday($id)
 	return $query->fetch();
 }
 
-function getAllBirthdays() 
+function getAllClients() 
 {
 	$db = openDatabaseConnection();
 
@@ -28,7 +28,7 @@ function getAllBirthdays()
 	return $query->fetchAll();
 }
 
-function createBirthday() 
+function createClient() 
 {
 	$firstname = ($_POST['firstname']);
 	$lastname = ($_POST['lastname']);
@@ -51,7 +51,7 @@ function createBirthday()
 	return true;
 }
 
-function deleteBirthday($id) 
+function deleteClient($id) 
 {
 	if (!$id) {
 		return false;
@@ -71,7 +71,7 @@ function deleteBirthday($id)
 
 
 
-function editBirthday() 
+function editClient() 
 {
 	$firstname = ($_POST['firstname']);
 	$lastname = ($_POST['lastname']);
@@ -83,7 +83,7 @@ function editBirthday()
 	
 	$db = openDatabaseConnection();
 
-	$sql = "UPDATE clients SET client_firstname = :firstname, client_lastname = :lastname WHERE id = :id";
+	$sql = "UPDATE clients SET client_firstname = :firstname, client_lastname = :lastname WHERE client_id = :id";
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		':firstname' => $firstname,
@@ -97,3 +97,17 @@ function editBirthday()
 
 
 
+function sortClients()
+{
+	$db = openDatabaseConnection();
+
+	$sql = "SELECT * FROM clients ORDER BY client_firstname ASC ";
+	$query = $db->prepare($sql);
+	$query->execute();
+
+	$db = null;
+
+
+	return true;
+
+}

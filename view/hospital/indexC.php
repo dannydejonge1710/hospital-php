@@ -3,17 +3,18 @@
 	<h1>Hospital</h1>
 	
 	<ul>
-		<li><a href="<?= URL ?>patients/index">Patients</a></li>
-		<li><a href="<?= URL ?>clients/index">Clients</a></li>
-		<li><a href="<?= URL ?>species/index">Species</a></li>
+		<li><a href="<?= URL ?>Patients/index">Patients</a></li>
+		<li><a href="<?= URL ?>Clients/index">Clients</a></li>
+		<li><a href="<?= URL ?>Species/index">Species</a></li>
 	</ul>
 
 		<table border="1">
 		<tr>
-			<th>Firstname</th>
-			<th>Lastname</th>
+			<th><a href="<?= URL ?>Clients/sortThis">Firstname</a></th>
+			<th><a href="<?= URL ?>Clients/sortThis">Lastname</a></th>
 			<th colspan="2">Action</th>
 		</tr>
+
 		
 		<?php foreach ($clients as $client) { ?>
 

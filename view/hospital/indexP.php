@@ -34,5 +34,5 @@
 	</table>
 
 	<p><a href="<?= URL ?>Patients/create">Create</a></p>
-	<p><a href="<?= URL ?>Patients/index">Home</a></p>
+	<p><a href="<?= URL ?>Clients/index">Home</a></p>
 </div>

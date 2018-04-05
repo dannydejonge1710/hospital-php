@@ -1,6 +1,6 @@
 <?php
 
-function getOneBirthday() 
+function getOneSpecie($id) 
 {
 	$db = openDatabaseConnection();
 
@@ -14,7 +14,7 @@ function getOneBirthday()
 	return $query->fetch();
 }
 
-function getAllBirthdays() 
+function getAllSpecies() 
 {
 	$db = openDatabaseConnection();
 
@@ -28,7 +28,7 @@ function getAllBirthdays()
 	return $query->fetchAll();
 }
 
-function createBirthday() 
+function createSpecie() 
 {
 	$description = ($_POST['description']);
 
@@ -48,7 +48,7 @@ function createBirthday()
 	return true;
 }
 
-function deleteBirthday($id) 
+function deleteSpecie($id) 
 {
 	if (!$id) {
 		return false;
@@ -56,7 +56,7 @@ function deleteBirthday($id)
 	
 	$db = openDatabaseConnection();
 
-	$sql = "DELETE FROM clients WHERE client_id=:id ";
+	$sql = "DELETE FROM species WHERE species_id=:id ";
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		':id' => $id));
@@ -68,23 +68,21 @@ function deleteBirthday($id)
 
 
 
-function editBirthday($id) 
+function editSpecie() 
 {
-	$firstname = ($_POST['firstname']);
-	$lastname = ($_POST['lastname']);
+	$description = ($_POST['description']);
 	$id = ($_POST['id']);
 	
-	if (strlen($firstname) == 0 || strlen($lastname) == 0 || strlen($id) == 0) {
+	if (strlen($description) == 0) {
 		return false;
 	}
 	
 	$db = openDatabaseConnection();
 
-	$sql = "UPDATE clients SET client_firstname = :firstname, client_lastname = :lastname WHERE id = :id";
+	$sql = "UPDATE species SET species_description = :description WHERE species_id = :id";
 	$query = $db->prepare($sql);
 	$query->execute(array(
-		':firstname' => $firstname,
-		':lastname' => $lastname,
+		':description' => $description,
 		':id' => $id));
 
 	$db = null;
