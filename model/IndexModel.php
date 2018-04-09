@@ -18,7 +18,8 @@ function getAllPatients()
 {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM patients";
+	$sql = "SELECT * FROM patients INNER JOIN species ON patients.species_description=species.species_description";
+
 	$query = $db->prepare($sql);
 	$query->execute();
 
@@ -31,23 +32,25 @@ function getAllPatients()
 function createPatient() 
 {
 	$patient_name = ($_POST['patient_name']);
+	$species_id = ($_POST['species_id']);
+	$client_id = ($_POST['client_id']);
 	$patient_status = ($_POST['patient_status']);
-	$patient_gender = ($_POST['patient_gender']);
 
 
-
-	if (strlen($patient_name) == 0 || strlen($patient_status) == 0 || strlen($patient_gender) == 0) {
+	if (strlen($patient_name) == 0 || strlen($species_id) == 0 || strlen($client_id) == 0 || strlen($patient_status) == 0) {
 		return false;
 	}
 	
 	$db = openDatabaseConnection();
 
-	$sql = "INSERT INTO patients(patient_name, patient_status, patient_gender) VALUES (:patient_name, :patient_status, :patient_gender)";
+	$sql = "INSERT INTO patients(patient_name, species_id, client_id, patient_status) VALUES (:patient_name, :species_id, :client_id, :patient_status)";
+	
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		':patient_name' => $patient_name,
-		':patient_status' => $patient_status,
-		':patient_gender' => $patient_gender));
+		':species_id' => $species_id,
+		':client_id' => $client_id,
+		':patient_status' => $patient_status));
 
 	$db = null;
 	
@@ -74,24 +77,27 @@ function deletePatient($id)
 
 
 
-function editClient() 
+function editPatient() 
 {
 	$patient_name = ($_POST['patient_name']);
+	$species_id = ($_POST['species_id']);
+	$client_id = ($_POST['client_id']);
 	$patient_status = ($_POST['patient_status']);
-	$patient_gender = ($_POST['patient_gender']);
+	$id = ($_POST['id']);
 	
-	if (strlen($patient_name) == 0 || strlen($patient_status) == 0 || strlen($patient_status) == 0 || strlen($id) == 0) {
+	if (strlen($patient_name) == 0 || strlen($species_id) == 0 || strlen($client_id) == 0 || strlen($patient_status) == 0 || strlen($id) == 0) {
 		return false;
 	}
 	
 	$db = openDatabaseConnection();
 
-	$sql = "UPDATE patients SET patient_name = :patient_name, patient_status = :patient_status, patient_gender = :patient_gender WHERE patient_id = :id";
+	$sql = "UPDATE patients SET patient_name = :patient_name, species_id = :species_id, client_id = :client_id, patient_status = :patient_status WHERE patient_id = :id";
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		':patient_name' => $patient_name,
+		':species_id' => $species_id,
+		':client_id' => $client_id,
 		':patient_status' => $patient_status,
-		':patient_gender' => $patient_gender,
 		':id' => $id));
 
 	$db = null;

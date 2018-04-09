@@ -16,7 +16,7 @@ function create()
 
 function createSave()
 {
-	if (!createSpecie()) {
+	if (!createSpecie($_POST)) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}
@@ -39,7 +39,7 @@ function deleteThis($id)
 function editThis($id)
 {
 	render("hospital/editS", array(
-		'clients' => getOneSpecie($id)
+		'species' => getOneSpecie($id)
 	));
 }
 

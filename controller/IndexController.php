@@ -1,17 +1,17 @@
 <?php
 
-require(ROOT . "model/PatientsModel.php");
+require(ROOT . "model/IndexModel.php");
 
 function index()
 {
-	render("hospital/indexP", array(
+	render("hospital/indexI", array(
 		'patients' => getAllPatients()
 	));
 }
 
 function create()
 {
-	render("hospital/createP");
+	render("hospital/createI");
 }
 
 function createSave()
@@ -22,7 +22,7 @@ function createSave()
 	}
 
 
-	header("Location:" . URL . "Patients/index");
+	header("Location:" . URL . "Index/index");
 }
 
 function deleteThis($id)
@@ -32,13 +32,13 @@ function deleteThis($id)
 		exit();
 	}
 
-	header("Location:" . URL . "Patients/index");
+	header("Location:" . URL . "Index/index");
 }
 
 
 function editThis($id)
 {
-	render("hospital/editP", array(
+	render("hospital/editI", array(
 		'patients' => getOnePatient($id)
 	));
 }
@@ -51,6 +51,5 @@ function editSaveThis()
 		exit();
 	}
 
-	header("Location:" . URL . "Patients/index");
+	header("Location:" . URL . "Index/index");
 } 
-

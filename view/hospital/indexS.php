@@ -1,8 +1,9 @@
 <div class="container">
 
-	<h1>Hospital</h1>
+	<h1>Species</h1>
 	
 	<ul>
+		<li><a href="<?= URL ?>Index/index">Index</a></li>
 		<li><a href="<?= URL ?>Patients/index">Patients</a></li>
 		<li><a href="<?= URL ?>Clients/index">Clients</a></li>
 		<li><a href="<?= URL ?>Species/index">Species</a></li>
@@ -10,7 +11,7 @@
 
 		<table border="1">
 		<tr>
-			<th>Description</th>
+			<th>Species Description</th>
 			<th colspan="2">Action</th>
 		</tr>
 		
