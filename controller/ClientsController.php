@@ -54,13 +54,3 @@ function editSaveThis()
 	header("Location:" . URL . "Clients/index");
 } 
 
-function sortThis()
-{
-	if (!sortClients()) {
-		header("Location:" . URL . "error/index");
-		exit();
-	}
-
-
-	header("Location:" . URL . "Clients/index");
-}

@@ -105,17 +105,3 @@ function editClient()
 
 
 
-function sortClients()
-{
-	$db = openDatabaseConnection();
-
-	$sql = "SELECT * FROM clients ORDER BY client_firstname ASC ";
-	$query = $db->prepare($sql);
-	$query->execute();
-
-	$db = null;
-
-
-	return true;
-
-}

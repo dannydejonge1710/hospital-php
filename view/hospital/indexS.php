@@ -3,7 +3,6 @@
 	<h1>Species</h1>
 	
 	<ul>
-		<li><a href="<?= URL ?>Index/index">Index</a></li>
 		<li><a href="<?= URL ?>Patients/index">Patients</a></li>
 		<li><a href="<?= URL ?>Clients/index">Clients</a></li>
 		<li><a href="<?= URL ?>Species/index">Species</a></li>
@@ -29,5 +28,5 @@
 	</table>
 
 	<p><a href="<?= URL ?>Species/create">Create</a></p>
-	<p><a href="<?= URL ?>Species/index">Home</a></p>
+	<p><a href="<?= URL ?>Patients/index">Home</a></p>
 </div>

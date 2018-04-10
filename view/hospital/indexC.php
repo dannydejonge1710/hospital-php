@@ -3,7 +3,6 @@
 	<h1>Clients</h1>
 	
 	<ul>
-		<li><a href="<?= URL ?>Index/index">Index</a></li>
 		<li><a href="<?= URL ?>Patients/index">Patients</a></li>
 		<li><a href="<?= URL ?>Clients/index">Clients</a></li>
 		<li><a href="<?= URL ?>Species/index">Species</a></li>
@@ -11,10 +10,10 @@
 
 		<table border="1">
 		<tr>
-			<th><a href="<?= URL ?>Clients/sortThis">Client Firstname</a></th>
-			<th><a href="<?= URL ?>Clients/sortThis">Client Lastname</a></th>
-			<th><a href="<?= URL ?>Clients/sortThis">Client Phonenumber</a></th>
-			<th><a href="<?= URL ?>Clients/sortThis">Client Email</a></th>
+			<th>Client Firstname</th>
+			<th>Client Lastname</th>
+			<th>Client Phonenumber</th>
+			<th>Client Email</th>
 
 			<th colspan="2">Action</th>
 		</tr>
@@ -37,5 +36,5 @@
 	</table>
 
 	<p><a href="<?= URL ?>Clients/create">Create</a></p>
-	<p><a href="<?= URL ?>Clients/index">Home</a></p>
+	<p><a href="<?= URL ?>Patients/index">Home</a></p>
 </div>
