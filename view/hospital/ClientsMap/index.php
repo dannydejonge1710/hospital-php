@@ -18,7 +18,6 @@
 			<th colspan="2">Action</th>
 		</tr>
 
-		
 		<?php foreach ($clients as $client) { ?>
 
 		<tr>

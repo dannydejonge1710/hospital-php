@@ -4,14 +4,14 @@ require(ROOT . "model/SpeciesModel.php");
 
 function index()
 {
-	render("hospital/indexS", array(
+	render("hospital/SpeciesMap/index", array(
 		'species' => getAllSpecies()
 	));
 }
 
 function create()
 {
-	render("hospital/createS");
+	render("hospital/SpeciesMap/create");
 }
 
 function createSave()
@@ -38,7 +38,7 @@ function deleteThis($id)
 
 function editThis($id)
 {
-	render("hospital/editS", array(
+	render("hospital/SpeciesMap/edit", array(
 		'species' => getOneSpecie($id)
 	));
 }

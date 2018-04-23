@@ -4,14 +4,14 @@ require(ROOT . "model/ClientsModel.php");
 
 function index()
 {
-	render("hospital/indexC", array(
+	render("hospital/ClientsMap/index", array(
 		'clients' => getAllClients()
 	));
 }
 
 function create()
 {
-	render("hospital/createC");
+	render("hospital/ClientsMap/create");
 }
 
 function createSave()
@@ -38,7 +38,7 @@ function deleteThis($id)
 
 function editThis($id)
 {
-	render("hospital/editC", array(
+	render("hospital/ClientsMap/edit", array(
 		'clients' => getOneClient($id)
 	));
 }

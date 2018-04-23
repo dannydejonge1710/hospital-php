@@ -1,17 +1,23 @@
 <?php
 
 require(ROOT . "model/PatientsModel.php");
+require(ROOT . "model/SpeciesModel.php");
+require(ROOT . "model/ClientsModel.php");
 
 function index()
 {
-	render("hospital/indexP", array(
+	render("hospital/PatientsMap/index", array(
 		'patients' => getAllPatients()
 	));
 }
 
 function create()
 {
-	render("hospital/createP");
+	render("hospital/PatientsMap/create", array(
+		'patients' => getAllPatients(),
+		'species' => getAllSpecies(),
+		'clients' => getAllClients()
+	));
 }
 
 function createSave()
@@ -38,7 +44,7 @@ function deleteThis($id)
 
 function editThis($id)
 {
-	render("hospital/editP", array(
+	render("hospital/PatientsMap/edit", array(
 		'patients' => getOnePatient($id)
 	));
 }

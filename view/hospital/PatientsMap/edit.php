@@ -11,7 +11,7 @@
 		</select>
 
 
-		<input type="text" name="patient_status" placeholder="Patient Status" value="<?= $patients['patient_status'] ?>">
+		<input type="text" name="patient_status" placeholder="Patient Status" value="<?= $patients['patient_name'] ?>">
 
 
 
