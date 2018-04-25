@@ -75,13 +75,13 @@ function deletePatient($id)
 
 
 
-function editPatient() 
+function editPatient($data) 
 {
-	$patient_name = ($_POST['patient_name']);
-	$species_id = ($_POST['species_id']);
-	$patient_status = ($_POST['patient_status']);
-	$client_id = ($_POST['client_id']);
-	$id = ($_POST['id']);
+	$patient_name = ($data['patient_name']);
+	$species_id = ($data['species_id']);
+	$patient_status = ($data['patient_status']);
+	$client_id = ($data['client_id']);
+	$id = ($data['id']);
 	
 	if (strlen($patient_name) == 0 || strlen($species_id) == 0 || strlen($patient_status) == 0 || strlen($client_id) == 0 || strlen($id) == 0) {
 		return false;

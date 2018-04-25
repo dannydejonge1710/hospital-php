@@ -45,14 +45,16 @@ function deleteThis($id)
 function editThis($id)
 {
 	render("hospital/PatientsMap/edit", array(
-		'patients' => getOnePatient($id)
+		'patients' => getOnePatient($id),
+		'clients' => getAllClients(),
+		'species' => getAllSpecies()
 	));
 }
 
 
 function editSaveThis()
 {
-	if (!editPatient()) {
+	if (!editPatient($_POST)) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}

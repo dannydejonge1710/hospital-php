@@ -2,21 +2,21 @@
 	<h1>Create</h1>
 	<form action="<?= URL ?>Patients/createSave" method="post">
 	
-		<input type="text" name="patient_name" placeholder="Patient name">
+		<p><input type="text" name="patient_name" placeholder="Patient name"></p>
 		
-		<select name="species_id">	
+		<p><select name="species_id">	
 			<?php foreach ($species as $specie) { ?>
 				<option value="<?= $specie['species_id'] ?>"><?= $specie['species_description'] ?></option>
 			<?php } ?>
-		</select>
+		</select></p>
 
-
-
-		<input type="text" name="patient_status" placeholder="Patient status">
-		<input type="text" name="client_id" placeholder="Client firstname">
-
-
-
+		<p><input type="text" name="patient_status" placeholder="Patient status"></p>
+	
+		<p><select name="client_id">	
+			<?php foreach ($clients as $client) { ?>
+				<option value="<?= $client['client_id'] ?>"><?= $client['client_firstname'] . " " . $client['client_lastname'] ?></option>
+			<?php } ?>
+		</select></p>
 
 
 		<input type="submit" value="Verzenden">

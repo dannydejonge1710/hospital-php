@@ -9,7 +9,7 @@
 	</ul>
 
 		<table border="1">
-		<thead>
+
 		<tr>
 			<th>Patient Name</th>
 			<th>Species</th>
@@ -18,7 +18,7 @@
 
 			<th colspan="2">Action</th>
 		</tr>
-	</thead>
+	
 		
 		<?php foreach ($patients as $patient) { ?>
 
@@ -26,7 +26,7 @@
 			<td><?= $patient['patient_name']; ?></td>
 			<td><?= $patient['species_description']; ?></td>
 			<td><?= $patient['patient_status']; ?></td>
-			<td><?= $patient['client_id']; ?></td>
+			<td><?= $patient['client_firstname'] . " " . $patient['client_lastname'] ; ?></td>
 
 			<td><a href="<?= URL ?>Patients/editThis/<?= $patient['patient_id'] ?>">Edit</a></td>
 			<td><a href="<?= URL ?>Patients/deleteThis/<?= $patient['patient_id'] ?>">Delete</a></td>
