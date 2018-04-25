@@ -18,7 +18,7 @@ function getAllSpecies()
 {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM species";
+	$sql = "SELECT * FROM species ORDER BY species_description";
 	$query = $db->prepare($sql);
 	$query->execute();
 
@@ -28,9 +28,9 @@ function getAllSpecies()
 	return $query->fetchAll();
 }
 
-function createSpecie() 
+function createSpecie($data) 
 {
-	$description = ($_POST['description']);
+	$description = ($data['description']);
 
 	if (strlen($description) == 0) {
 		return false;
@@ -68,10 +68,10 @@ function deleteSpecie($id)
 
 
 
-function editSpecie() 
+function editSpecie($data) 
 {
-	$description = ($_POST['description']);
-	$id = ($_POST['id']);
+	$description = ($data['description']);
+	$id = ($data['id']);
 	
 	if (strlen($description) == 0) {
 		return false;

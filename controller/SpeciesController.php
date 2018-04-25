@@ -46,7 +46,7 @@ function editThis($id)
 
 function editSaveThis()
 {
-	if (!editSpecie()) {
+	if (!editSpecie($_POST)) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}

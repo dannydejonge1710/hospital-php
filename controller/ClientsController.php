@@ -16,7 +16,7 @@ function create()
 
 function createSave()
 {
-	if (!createClient()) {
+	if (!createClient($_POST)) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}
@@ -46,7 +46,7 @@ function editThis($id)
 
 function editSaveThis()
 {
-	if (!editClient()) {
+	if (!editClient($_POST)) {
 		header("Location:" . URL . "error/index");
 		exit();
 	}

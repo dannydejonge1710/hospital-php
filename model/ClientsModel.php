@@ -18,7 +18,7 @@ function getAllClients()
 {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM clients";
+	$sql = "SELECT * FROM clients ORDER BY client_firstname";
 	$query = $db->prepare($sql);
 	$query->execute();
 
@@ -28,12 +28,12 @@ function getAllClients()
 	return $query->fetchAll();
 }
 
-function createClient() 
+function createClient($data) 
 {
-	$firstname = ($_POST['firstname']);
-	$lastname = ($_POST['lastname']);
-	$phonenumber = ($_POST['phonenumber']);
-	$email = ($_POST['email']);
+	$firstname = ($data['firstname']);
+	$lastname = ($data['lastname']);
+	$phonenumber = ($data['phonenumber']);
+	$email = ($data['email']);
 
 
 	if (strlen($firstname) == 0 || strlen($lastname) == 0 || strlen($phonenumber) == 0 || strlen($email) == 0) {
@@ -75,13 +75,13 @@ function deleteClient($id)
 
 
 
-function editClient() 
+function editClient($data) 
 {
-	$firstname = ($_POST['firstname']);
-	$lastname = ($_POST['lastname']);
-	$phonenumber= ($_POST['phonenumber']);
-	$email = ($_POST['email']);
-	$id = ($_POST['id']);
+	$firstname = ($data['firstname']);
+	$lastname = ($data['lastname']);
+	$phonenumber= ($data['phonenumber']);
+	$email = ($data['email']);
+	$id = ($data['id']);
 	
 	if (strlen($firstname) == 0 || strlen($lastname) == 0 || strlen($phonenumber) == 0 || strlen($email) == 0 ||  strlen($id) == 0) {
 		return false;

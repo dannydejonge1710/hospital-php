@@ -18,7 +18,7 @@ function getAllPatients()
 {
 	$db = openDatabaseConnection();
 
-	$sql = "SELECT * FROM patients LEFT JOIN species ON patients.species_id = species.species_id LEFT JOIN clients ON patients.client_id = clients.client_id";
+	$sql = "SELECT * FROM patients LEFT JOIN species ON patients.species_id = species.species_id LEFT JOIN clients ON patients.client_id = clients.client_id ORDER BY patient_name";
 	$query = $db->prepare($sql);
 	$query->execute();
 
@@ -28,12 +28,12 @@ function getAllPatients()
 	return $query->fetchAll();
 }
 
-function createPatient() 
+function createPatient($data) 
 {
-	$patient_name = ($_POST['patient_name']);
-	$species_id = ($_POST['species_id']);
-	$patient_status = ($_POST['patient_status']);
-	$client_id = ($_POST['client_id']);
+	$patient_name = ($data['patient_name']);
+	$species_id = ($data['species_id']);
+	$patient_status = ($data['patient_status']);
+	$client_id = ($data['client_id']);
 
 	if (strlen($patient_name) == 0 || strlen($species_id) == 0 || strlen($patient_status) == 0 || strlen($client_id) == 0) {
 		return false;
