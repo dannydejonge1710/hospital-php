@@ -19,8 +19,8 @@
 		<tr>
 			<td><?= $specie['species_description']; ?></td>
 
-			<td><a href="<?= URL ?>Species/editThis/<?= $specie['species_id'] ?>">Edit</a></td>
-			<td><a href="<?= URL ?>Species/deleteThis/<?= $specie['species_id'] ?>">Delete</a></td>
+			<td><a href="<?= URL ?>Species/edit/<?= $specie['species_id'] ?>">Edit</a></td>
+			<td><a href="<?= URL ?>Species/delete/<?= $specie['species_id'] ?>">Delete</a></td>
 		</tr>
 		
 		<?php } ?>

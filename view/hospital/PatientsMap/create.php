@@ -2,7 +2,7 @@
 	<h1>Create</h1>
 	<form action="<?= URL ?>Patients/createSave" method="post">
 	
-		<p><input type="text" name="patient_name" placeholder="Patient name"></p>
+		<p><input required type="text" name="patient_name" placeholder="Patient name"></p>
 		
 		<p><select name="species_id">	
 			<?php foreach ($species as $specie) { ?>
@@ -10,7 +10,7 @@
 			<?php } ?>
 		</select></p>
 
-		<p><input type="text" name="patient_status" placeholder="Patient status"></p>
+		<p><input required type="text" name="patient_status" placeholder="Patient status"></p>
 	
 		<p><select name="client_id">	
 			<?php foreach ($clients as $client) { ?>

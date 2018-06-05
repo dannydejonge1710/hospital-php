@@ -25,7 +25,7 @@ function createSave()
 	header("Location:" . URL . "Clients/index");
 }
 
-function deleteThis($id)
+function delete($id)
 {
 	if (!deleteClient($id)) {
 		header("Location:" . URL . "error/index");
@@ -36,7 +36,7 @@ function deleteThis($id)
 }
 
 
-function editThis($id)
+function edit($id)
 {
 	render("hospital/ClientsMap/edit", array(
 		'clients' => getOneClient($id)
@@ -44,7 +44,7 @@ function editThis($id)
 }
 
 
-function editSaveThis()
+function editSave()
 {
 	if (!editClient($_POST)) {
 		header("Location:" . URL . "error/index");

@@ -25,7 +25,7 @@ function createSave()
 	header("Location:" . URL . "Species/index");
 }
 
-function deleteThis($id)
+function delete($id)
 {
 	if (!deleteSpecie($id)) {
 		header("Location:" . URL . "error/index");
@@ -36,7 +36,7 @@ function deleteThis($id)
 }
 
 
-function editThis($id)
+function edit($id)
 {
 	render("hospital/SpeciesMap/edit", array(
 		'species' => getOneSpecie($id)
@@ -44,7 +44,7 @@ function editThis($id)
 }
 
 
-function editSaveThis()
+function editSave()
 {
 	if (!editSpecie($_POST)) {
 		header("Location:" . URL . "error/index");

@@ -28,8 +28,8 @@
 			<td><?= $patient['patient_status']; ?></td>
 			<td><?= $patient['client_firstname'] . " " . $patient['client_lastname'] ; ?></td>
 
-			<td><a href="<?= URL ?>Patients/editThis/<?= $patient['patient_id'] ?>">Edit</a></td>
-			<td><a href="<?= URL ?>Patients/deleteThis/<?= $patient['patient_id'] ?>">Delete</a></td>
+			<td><a href="<?= URL ?>Patients/edit/<?= $patient['patient_id'] ?>">Edit</a></td>
+			<td><a href="<?= URL ?>Patients/delete/<?= $patient['patient_id'] ?>">Delete</a></td>
 		</tr>
 		
 		<?php } ?>	

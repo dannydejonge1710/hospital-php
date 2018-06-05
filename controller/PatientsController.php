@@ -14,7 +14,6 @@ function index()
 function create()
 {
 	render("hospital/PatientsMap/create", array(
-		'patients' => getAllPatients(),
 		'species' => getAllSpecies(),
 		'clients' => getAllClients()
 	));
@@ -31,7 +30,7 @@ function createSave()
 	header("Location:" . URL . "Patients/index");
 }
 
-function deleteThis($id)
+function delete($id)
 {
 	if (!deletePatient($id)) {
 		header("Location:" . URL . "error/index");
@@ -42,7 +41,7 @@ function deleteThis($id)
 }
 
 
-function editThis($id)
+function edit($id)
 {
 	render("hospital/PatientsMap/edit", array(
 		'patients' => getOnePatient($id),
@@ -52,7 +51,7 @@ function editThis($id)
 }
 
 
-function editSaveThis()
+function editSave()
 {
 	if (!editPatient($_POST)) {
 		header("Location:" . URL . "error/index");
